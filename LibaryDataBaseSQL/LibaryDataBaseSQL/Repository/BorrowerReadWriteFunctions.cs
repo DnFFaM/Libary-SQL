@@ -11,8 +11,9 @@ namespace LibaryDataBaseSQL.Repository
     {
         static string connectionString = @"SERVER = 192.168.23.201,1433\SQLEXPRESS; DATABASE = Bib; USER ID = Adel; PASSWORD = Passw0rd";
 
-        public void SearchBorrower(string BorrworName)
+        public void SearchBorrower(string BorrworName, out bool borrowFound)
         {
+            borrowFound = false;
             using (SqlConnection sqlconn = new SqlConnection(connectionString))
             {
                 try
@@ -25,6 +26,7 @@ namespace LibaryDataBaseSQL.Repository
                     SqlDataReader reader = cmd.ExecuteReader();
                     while (reader.Read())
                     {
+                        borrowFound = true;
                         Console.WriteLine("Author: {0} | Title: {1} | Borrower: {2}", reader["Auth"], reader["Title"], reader["Borrower"]);
                     }
                     reader.Close();

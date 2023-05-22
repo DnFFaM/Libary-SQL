@@ -24,7 +24,6 @@ namespace LibaryDataBaseSql
                 textToMenu += ("\n Type 1 For Search Menu \n");
                 textToMenu += ("\n Type 2 For Create Menu \n");
                 textToMenu += ("\n Type 3 For Delete Menu \n");
-                textToMenu += ("\n Type 4 For Search Menu \n\n");
                 Console.Write("{0}", textToMenu);
                 string? figur = Console.ReadLine();
                 try
@@ -54,10 +53,14 @@ namespace LibaryDataBaseSql
                             if (authorFound)
                             {
                                 Console.WriteLine("\nAuthors: ");
+                                Console.ReadKey();
+                                Console.Clear();
                             }
                             else
                             {
-                                Console.WriteLine("\nNone authors found.");
+                                Console.WriteLine("\nNone Authors Found With The Name " + authorName + ".");
+                                Console.ReadKey();
+                                Console.Clear();
                             }
                         }
 
@@ -65,18 +68,44 @@ namespace LibaryDataBaseSql
                         {
                             Console.WriteLine("Enter a Book Name to search for:");
                             string BookName = Console.ReadLine();
+                            bool bookFound;
 
                             BookReadWriteFunctions bookrwf = new BookReadWriteFunctions();
-                            bookrwf.SearchBook(BookName);
+                            bookrwf.SearchBook(BookName, out bookFound);
+                            if (bookFound)
+                            {
+                                Console.WriteLine("\nBooks: ");
+                                Console.ReadKey();
+                                Console.Clear();
+                            }
+                            else
+                            {
+                                Console.WriteLine("\nNo Book found With The Name " + BookName + ".");
+                                Console.ReadKey();
+                                Console.Clear();
+                            }
                         }
 
                         if (Searchfigur == "3")
                         {
                             Console.WriteLine("Enter a Borrower Name to search for:");
                             string BorrworName = Console.ReadLine();
+                            bool borrowFound;
 
                             BorrowerReadWriteFunctions borrowerrwf = new BorrowerReadWriteFunctions();
-                            borrowerrwf.SearchBorrower(BorrworName);
+                            borrowerrwf.SearchBorrower(BorrworName, out borrowFound);
+                            if (borrowFound)
+                            {
+                                Console.WriteLine("\nBorrowers: ");
+                                Console.ReadKey();
+                                Console.Clear();
+                            }
+                            else
+                            {
+                                Console.WriteLine("\nNo Borrower found With The Name " + BorrworName + ".");
+                                Console.ReadKey();
+                                Console.Clear();
+                            }
                         }
 
                         if (Searchfigur == "0")
