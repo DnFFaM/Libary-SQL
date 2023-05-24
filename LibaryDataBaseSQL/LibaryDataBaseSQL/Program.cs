@@ -23,7 +23,7 @@ namespace LibaryDataBaseSql
                 textToMenu = ("\nSQL Library Application !!! \n\n");
                 textToMenu += ("\n Type 1 For Search Menu \n");
                 textToMenu += ("\n Type 2 For Create Menu \n");
-                textToMenu += ("\n Type 3 For Delete Menu \n");
+                textToMenu += ("\n Type 3 For Delete Menu \n\n");
                 Console.Write("{0}", textToMenu);
                 string? figur = Console.ReadLine();
                 try
@@ -52,21 +52,19 @@ namespace LibaryDataBaseSql
 
                             if (authorFound)
                             {
-                                Console.WriteLine("\nAuthors: ");
-                                Console.ReadKey();
+                                Console.ReadLine();
                                 Console.Clear();
                             }
                             else
                             {
-                                Console.WriteLine("\nNone Authors Found With The Name " + authorName + ".");
-                                Console.ReadKey();
+                                Console.ReadLine();
                                 Console.Clear();
                             }
                         }
 
                         if (Searchfigur == "2")
                         {
-                            Console.WriteLine("Enter a Book Name to search for:");
+                            Console.WriteLine("\nEnter a Book Name to search for:");
                             string BookName = Console.ReadLine();
                             bool bookFound;
 
@@ -88,7 +86,7 @@ namespace LibaryDataBaseSql
 
                         if (Searchfigur == "3")
                         {
-                            Console.WriteLine("Enter a Borrower Name to search for:");
+                            Console.WriteLine("\nEnter a Borrower Name to search for:");
                             string BorrworName = Console.ReadLine();
                             bool borrowFound;
 
@@ -128,29 +126,54 @@ namespace LibaryDataBaseSql
 
                         if (Createfigur == "1")
                         {
-                            Console.WriteLine("Enter The Áuthor Name To Add a New Author:");
+                            Console.WriteLine("\nEnter The Author Name To Add a New Author:");
                             string AuthorNameC = Console.ReadLine();
+                            bool authorCreate;
 
                             AuthorReadWriteFunctions Authorrwf = new AuthorReadWriteFunctions();
-                            Authorrwf.CreateAuthor(AuthorNameC);
+                            Authorrwf.CreateAuthor(AuthorNameC, out authorCreate);
+                            if (authorCreate == true)
+                            {
+                                Console.Clear();
+                            }
+                            else
+                            {
+                                Console.Clear();
+                            }
                         }
 
                         if (Createfigur == "2")
                         {
-                            Console.WriteLine("Enter The Book Name To Add it:");
-                            string BookNameC = Console.ReadLine();
+                            try
+                            {
+                                Console.WriteLine("\nEnter The Book Name To Add it:");
+                                string bookName = Console.ReadLine();
 
-                            BookReadWriteFunctions bookrwf = new BookReadWriteFunctions();
-                            bookrwf.CreateBook(BookNameC);
+                                Console.WriteLine("\nEnter An Author Id To Link The Book With:");
+                                int authorId = int.Parse(Console.ReadLine());
+
+                                BookReadWriteFunctions bookRWF = new BookReadWriteFunctions();
+                                bookRWF.CreateBook(bookName, authorId);
+
+                                var key = Console.ReadKey().Key;
+                                Console.Clear();
+                            }
+                            catch (Exception ex)
+                            {
+                                Console.WriteLine(ex.ToString());
+                            }
                         }
 
                         if (Createfigur == "3")
                         {
-                            Console.WriteLine("Enter The Borrower Name To Add a Borrwer:");
+                            Console.WriteLine("\nEnter The Borrower Name To Add a Borrwer:");
                             string BorrworNameC = Console.ReadLine();
 
+                            Console.WriteLine("\nEnter An Book Id To Link The Book With:");
+                            int Book_Id = int.Parse(Console.ReadLine());
+
                             BorrowerReadWriteFunctions borrowerrwf = new BorrowerReadWriteFunctions();
-                            borrowerrwf.CreateBorrower(BorrworNameC);
+                            borrowerrwf.CreateBorrower(BorrworNameC, Book_Id);
                         }
 
                         if (Createfigur == "0")
@@ -167,10 +190,7 @@ namespace LibaryDataBaseSql
                     Console.Clear();
                     goto start;
                 }
-
             }
-
         }
-
     }
 }

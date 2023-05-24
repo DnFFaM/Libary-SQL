@@ -43,33 +43,35 @@ namespace LibaryDataBaseSQL.Repository
             }
         }
 
-        public void CreateBorrower(string BorrworNameC)
+        public void CreateBorrower(string BorrworNameC, int Book_Id)
         {
             using (SqlConnection sqlconn = new SqlConnection(connectionString))
             {
-                try
-                {
-                    sqlconn.Open();
+                borrowerCreate(BorrworNameC, sqlconn);
+            }
+        }
 
-                    SqlCommand cmd = new SqlCommand("INSERT INTO Book VALUES (@FullName)", sqlconn);
-                    cmd.Parameters.AddWithValue("@Borrower", BorrworNameC);
+        private void borrowerCreate(string borrworNameC, SqlConnection sqlconn)
+        {
+            throw new NotImplementedException();
+        }
 
-                    SqlDataReader reader = cmd.ExecuteReader();
-                    while (reader.Read())
-                    {
-                        Console.WriteLine("Author: {0} | Title: {1} | Borrower: {2}", reader["Auth"], reader["Title"], reader["Borrower"]);
-                    }
-                    reader.Close();
-                    sqlconn.Close();
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                }
-                finally
-                {
-                    Console.ReadKey();
-                }
+        private static void borrowerCreate(string BorrworNameC, int Book_Id, SqlConnection sqlConn)
+        {
+            try
+            {
+                sqlConn.Open();
+
+                SqlCommand cmd = new SqlCommand("INSERT INTO Borrower (FullName, Book_Id) VALUES (@FullName, @Book_Id);", sqlConn);
+                cmd.Parameters.AddWithValue("@FullName", BorrworNameC);
+                cmd.Parameters.AddWithValue("@Book_Id", Book_Id);
+
+                cmd.ExecuteNonQuery();
+                Console.WriteLine("\nBorrower Created Successfully.");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
             }
         }
     }
