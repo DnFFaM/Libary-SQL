@@ -20,3 +20,25 @@ C:\Users\ada\Documents\SQL Project\LibaryDataBaseSQL\LibaryDataBaseSQL\obj\Debug
 C:\Users\ada\Documents\SQL Project\LibaryDataBaseSQL\LibaryDataBaseSQL\obj\Debug\net6.0\LibaryDataBaseSQL.pdb
 C:\Users\ada\Documents\SQL Project\LibaryDataBaseSQL\LibaryDataBaseSQL\obj\Debug\net6.0\LibaryDataBaseSQL.genruntimeconfig.cache
 C:\Users\ada\Documents\SQL Project\LibaryDataBaseSQL\LibaryDataBaseSQL\obj\Debug\net6.0\ref\LibaryDataBaseSQL.dll
+C:\Users\ada\source\repos\Libary-SQL\LibaryDataBaseSQL\LibaryDataBaseSQL\bin\Debug\net6.0\LibaryDataBaseSQL.exe
+C:\Users\ada\source\repos\Libary-SQL\LibaryDataBaseSQL\LibaryDataBaseSQL\bin\Debug\net6.0\LibaryDataBaseSQL.deps.json
+C:\Users\ada\source\repos\Libary-SQL\LibaryDataBaseSQL\LibaryDataBaseSQL\bin\Debug\net6.0\LibaryDataBaseSQL.runtimeconfig.json
+C:\Users\ada\source\repos\Libary-SQL\LibaryDataBaseSQL\LibaryDataBaseSQL\bin\Debug\net6.0\LibaryDataBaseSQL.dll
+C:\Users\ada\source\repos\Libary-SQL\LibaryDataBaseSQL\LibaryDataBaseSQL\bin\Debug\net6.0\LibaryDataBaseSQL.pdb
+C:\Users\ada\source\repos\Libary-SQL\LibaryDataBaseSQL\LibaryDataBaseSQL\bin\Debug\net6.0\System.Data.SqlClient.dll
+C:\Users\ada\source\repos\Libary-SQL\LibaryDataBaseSQL\LibaryDataBaseSQL\bin\Debug\net6.0\runtimes\win-arm64\native\sni.dll
+C:\Users\ada\source\repos\Libary-SQL\LibaryDataBaseSQL\LibaryDataBaseSQL\bin\Debug\net6.0\runtimes\win-x64\native\sni.dll
+C:\Users\ada\source\repos\Libary-SQL\LibaryDataBaseSQL\LibaryDataBaseSQL\bin\Debug\net6.0\runtimes\win-x86\native\sni.dll
+C:\Users\ada\source\repos\Libary-SQL\LibaryDataBaseSQL\LibaryDataBaseSQL\bin\Debug\net6.0\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll
+C:\Users\ada\source\repos\Libary-SQL\LibaryDataBaseSQL\LibaryDataBaseSQL\bin\Debug\net6.0\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
+C:\Users\ada\source\repos\Libary-SQL\LibaryDataBaseSQL\LibaryDataBaseSQL\obj\Debug\net6.0\LibaryDataBaseSQL.csproj.AssemblyReference.cache
+C:\Users\ada\source\repos\Libary-SQL\LibaryDataBaseSQL\LibaryDataBaseSQL\obj\Debug\net6.0\LibaryDataBaseSQL.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\ada\source\repos\Libary-SQL\LibaryDataBaseSQL\LibaryDataBaseSQL\obj\Debug\net6.0\LibaryDataBaseSQL.AssemblyInfoInputs.cache
+C:\Users\ada\source\repos\Libary-SQL\LibaryDataBaseSQL\LibaryDataBaseSQL\obj\Debug\net6.0\LibaryDataBaseSQL.AssemblyInfo.cs
+C:\Users\ada\source\repos\Libary-SQL\LibaryDataBaseSQL\LibaryDataBaseSQL\obj\Debug\net6.0\LibaryDataBaseSQL.csproj.CoreCompileInputs.cache
+C:\Users\ada\source\repos\Libary-SQL\LibaryDataBaseSQL\LibaryDataBaseSQL\obj\Debug\net6.0\LibaryDataBaseSQL.csproj.CopyComplete
+C:\Users\ada\source\repos\Libary-SQL\LibaryDataBaseSQL\LibaryDataBaseSQL\obj\Debug\net6.0\LibaryDataBaseSQL.dll
+C:\Users\ada\source\repos\Libary-SQL\LibaryDataBaseSQL\LibaryDataBaseSQL\obj\Debug\net6.0\refint\LibaryDataBaseSQL.dll
+C:\Users\ada\source\repos\Libary-SQL\LibaryDataBaseSQL\LibaryDataBaseSQL\obj\Debug\net6.0\LibaryDataBaseSQL.pdb
+C:\Users\ada\source\repos\Libary-SQL\LibaryDataBaseSQL\LibaryDataBaseSQL\obj\Debug\net6.0\LibaryDataBaseSQL.genruntimeconfig.cache
+C:\Users\ada\source\repos\Libary-SQL\LibaryDataBaseSQL\LibaryDataBaseSQL\obj\Debug\net6.0\ref\LibaryDataBaseSQL.dll

@@ -104,6 +104,69 @@ namespace LibaryDataBaseSQL.Repository
                 }
             }
         }
+        public void DeleteBook(string bookName, out bool bookDeleted)
+        {
+            bookDeleted = false;
+            using (SqlConnection sqlConn = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    sqlConn.Open();
+
+                    // Check if the book is rented
+                    SqlCommand rentedCmd = new SqlCommand("SELECT * FROM RentedBooks WHERE Title = @Title AND Borrower IS NOT NULL", sqlConn);
+                    rentedCmd.Parameters.AddWithValue("@Title", bookName);
+
+                    SqlDataReader rentedReader = rentedCmd.ExecuteReader();
+                    if (rentedReader.HasRows)
+                    {
+                        // Book is rented and has a borrower, cannot delete
+                        Console.WriteLine("\nThe book '{0}' is currently rented and cannot be deleted.", bookName);
+                        rentedReader.Close();
+                        return;
+                    }
+                    rentedReader.Close();
+
+                    // Check if the book exists in the Book table
+                    SqlCommand bookCmd = new SqlCommand("SELECT * FROM Book WHERE Title = @Title", sqlConn);
+                    bookCmd.Parameters.AddWithValue("@Title", bookName);
+
+                    SqlDataReader bookReader = bookCmd.ExecuteReader();
+                    if (bookReader.HasRows)
+                    {
+                        // Book found, delete it
+                        bookReader.Close();
+
+                        SqlCommand deleteCmd = new SqlCommand("DELETE FROM Book WHERE Title = @Title", sqlConn);
+                        deleteCmd.Parameters.AddWithValue("@Title", bookName);
+
+                        int rowsAffected = deleteCmd.ExecuteNonQuery();
+                        if (rowsAffected > 0)
+                        {
+                            Console.WriteLine("\nThe book '{0}' has been deleted.", bookName);
+                            bookDeleted = true;
+                            Console.ReadKey();
+                            Console.Clear();
+                        }
+                    }
+                    else
+                    {
+                        Console.WriteLine("\nNo books found with the title '{0}'.", bookName);
+                    }
+
+                    bookReader.Close();
+                    sqlConn.Close();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+                finally
+                {
+                    Console.ReadKey();
+                }
+            }
+        }
         public string GetAuthorName(SqlConnection connection, int authorId)
         {
             SqlCommand cmd = new SqlCommand("SELECT FullName FROM Author WHERE Id = @AuthorId", connection);

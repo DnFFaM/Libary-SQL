@@ -85,4 +85,10 @@
 --SELECT FullName FROM Author;
 
 
-SELECT * FROM RentedBooks, Tal,;
+--CREATE VIEW NonRentedBooks AS
+--	SELECT Author.FullName AS Auth, Book.Title AS Title, Book.Id AS BookId FROM Author
+--	JOIN Book ON Book.Author_Id = Author.Id
+
+SELECT * FROM RentedBooks;
+
+SELECT * FROM NonRentedBooks;

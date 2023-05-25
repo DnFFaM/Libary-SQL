@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "TA0MY8le3zN447PH/OXw21ORzXUfI5LOr9k/gPHMFBT/1l7gZ4rMcxK7R7UNU4wF8KXvpZhg1u+B/UlyOxdr9A==",
+  "dgSpecHash": "kjvZr2TbKJMqPTnnQkpsISrQ9xFUd5YJSUtXpQxKuuqtTy5cyKKKXna7MTpKKpbDf2v3rKT5zUVkP82VvZZOdA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\ada\\Documents\\SQL Project\\LibaryDataBaseSQL\\LibaryDataBaseSQL\\LibaryDataBaseSQL.csproj",
+  "projectFilePath": "C:\\Users\\ada\\source\\repos\\Libary-SQL\\LibaryDataBaseSQL\\LibaryDataBaseSQL\\LibaryDataBaseSQL.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\ada\\.nuget\\packages\\microsoft.netcore.platforms\\3.1.0\\microsoft.netcore.platforms.3.1.0.nupkg.sha512",
     "C:\\Users\\ada\\.nuget\\packages\\microsoft.win32.registry\\4.7.0\\microsoft.win32.registry.4.7.0.nupkg.sha512",

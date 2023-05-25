@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\ada\\Documents\\SQL Project\\LibaryDataBaseSQL\\LibaryDataBaseSQL\\LibaryDataBaseSQL.csproj": {}
+    "C:\\Users\\ada\\source\\repos\\Libary-SQL\\LibaryDataBaseSQL\\LibaryDataBaseSQL\\LibaryDataBaseSQL.csproj": {}
   },
   "projects": {
-    "C:\\Users\\ada\\Documents\\SQL Project\\LibaryDataBaseSQL\\LibaryDataBaseSQL\\LibaryDataBaseSQL.csproj": {
+    "C:\\Users\\ada\\source\\repos\\Libary-SQL\\LibaryDataBaseSQL\\LibaryDataBaseSQL\\LibaryDataBaseSQL.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\ada\\Documents\\SQL Project\\LibaryDataBaseSQL\\LibaryDataBaseSQL\\LibaryDataBaseSQL.csproj",
+        "projectUniqueName": "C:\\Users\\ada\\source\\repos\\Libary-SQL\\LibaryDataBaseSQL\\LibaryDataBaseSQL\\LibaryDataBaseSQL.csproj",
         "projectName": "LibaryDataBaseSQL",
-        "projectPath": "C:\\Users\\ada\\Documents\\SQL Project\\LibaryDataBaseSQL\\LibaryDataBaseSQL\\LibaryDataBaseSQL.csproj",
+        "projectPath": "C:\\Users\\ada\\source\\repos\\Libary-SQL\\LibaryDataBaseSQL\\LibaryDataBaseSQL\\LibaryDataBaseSQL.csproj",
         "packagesPath": "C:\\Users\\ada\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\ada\\Documents\\SQL Project\\LibaryDataBaseSQL\\LibaryDataBaseSQL\\obj\\",
+        "outputPath": "C:\\Users\\ada\\source\\repos\\Libary-SQL\\LibaryDataBaseSQL\\LibaryDataBaseSQL\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

@@ -42,29 +42,22 @@ namespace LibaryDataBaseSQL.Repository
                 }
             }
         }
-
-        public void CreateBorrower(string BorrworNameC, int Book_Id)
+        public void CreateBorrower(string BorrowerName, int BookId)
         {
-            using (SqlConnection sqlconn = new SqlConnection(connectionString))
+            using (SqlConnection sqlConn = new SqlConnection(connectionString))
             {
-                borrowerCreate(BorrworNameC, sqlconn);
+                borrowerCreate(BorrowerName, BookId, sqlConn);
             }
         }
-
-        private void borrowerCreate(string borrworNameC, SqlConnection sqlconn)
-        {
-            throw new NotImplementedException();
-        }
-
-        private static void borrowerCreate(string BorrworNameC, int Book_Id, SqlConnection sqlConn)
+        private static void borrowerCreate(string BorrowerName, int BookId, SqlConnection sqlConn)
         {
             try
             {
                 sqlConn.Open();
 
                 SqlCommand cmd = new SqlCommand("INSERT INTO Borrower (FullName, Book_Id) VALUES (@FullName, @Book_Id);", sqlConn);
-                cmd.Parameters.AddWithValue("@FullName", BorrworNameC);
-                cmd.Parameters.AddWithValue("@Book_Id", Book_Id);
+                cmd.Parameters.AddWithValue("@FullName", BorrowerName);
+                cmd.Parameters.AddWithValue("@Book_Id", BookId);
 
                 cmd.ExecuteNonQuery();
                 Console.WriteLine("\nBorrower Created Successfully.");
@@ -72,6 +65,53 @@ namespace LibaryDataBaseSQL.Repository
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
+            }
+        }
+        public void DeleteBorrower(string borrowerName, out bool borrowerDeleted)
+        {
+            borrowerDeleted = false;
+            using (SqlConnection sqlConn = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    sqlConn.Open();
+
+                    // Search for the borrower in the RentedBooks table
+                    SqlCommand searchCmd = new SqlCommand("SELECT * FROM RentedBooks WHERE Borrower = @Borrower", sqlConn);
+                    searchCmd.Parameters.AddWithValue("@Borrower", borrowerName);
+
+                    SqlDataReader reader = searchCmd.ExecuteReader();
+                    if (reader.HasRows)
+                    {
+                        // Borrower found, delete their records
+                        reader.Close();
+
+                        SqlCommand deleteCmd = new SqlCommand("DELETE FROM RentedBooks WHERE Borrower = @Borrower", sqlConn);
+                        deleteCmd.Parameters.AddWithValue("@Borrower", borrowerName);
+
+                        int rowsAffected = deleteCmd.ExecuteNonQuery();
+                        if (rowsAffected > 0)
+                        {
+                            Console.WriteLine("Borrower '{0}' and their rented books have been deleted.", borrowerName);
+                            borrowerDeleted = true;
+                        }
+                    }
+                    else
+                    {
+                        Console.WriteLine("No records found for borrower '{0}'.", borrowerName);
+                    }
+
+                    reader.Close();
+                    sqlConn.Close();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+                finally
+                {
+                    Console.ReadKey();
+                }
             }
         }
     }

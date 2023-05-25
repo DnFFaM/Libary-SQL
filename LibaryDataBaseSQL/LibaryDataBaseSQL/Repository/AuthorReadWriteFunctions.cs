@@ -136,7 +136,82 @@ namespace LibaryDataBaseSQL.Repository
 
             return authorId;
         }
+        public void DeleteAuthor(string authorName, out bool authorDeleted)
+        {
+            authorDeleted = false;
+            using (SqlConnection sqlConn = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    sqlConn.Open();
 
+                    // Search in the RentedBooks table
+                    SqlCommand rentedBooksCmd = new SqlCommand("SELECT * FROM RentedBooks WHERE Auth = @Author", sqlConn);
+                    rentedBooksCmd.Parameters.AddWithValue("@Author", authorName);
 
+                    SqlDataReader rentedBooksReader = rentedBooksCmd.ExecuteReader();
+
+                    while (rentedBooksReader.Read())
+                    {
+                        authorDeleted = true;
+                        Console.WriteLine("Author: {0} | Title: {1} | Borrower: {2}", rentedBooksReader["Auth"], rentedBooksReader["Title"], rentedBooksReader["Borrower"]);
+                    }
+
+                    rentedBooksReader.Close();
+
+                    if (authorDeleted)
+                    {
+                        Console.WriteLine("\nThe author '{0}' cannot be deleted because there are books rented by this author.", authorName);
+                        return;
+                    }
+
+                    // Search in the NonRentedBooks table
+                    SqlCommand nonRentedBooksCmd = new SqlCommand("SELECT * FROM NonRentedBooks WHERE Auth = @Author AND BookId IS NULL", sqlConn);
+                    nonRentedBooksCmd.Parameters.AddWithValue("@Author", authorName);
+
+                    SqlDataReader nonRentedBooksReader = nonRentedBooksCmd.ExecuteReader();
+
+                    if (nonRentedBooksReader.HasRows)
+                    {
+                        authorDeleted = true;
+                        Console.WriteLine("\nAuthor found in NonRentedBooks table:");
+
+                        while (nonRentedBooksReader.Read())
+                        {
+                            int bookId = (int)nonRentedBooksReader["BookId"];
+                            string bookTitle = GetBookTitle(sqlConn, bookId);
+                            Console.WriteLine("Book Attached: {0}", bookTitle);
+                        }
+
+                        Console.WriteLine("\nThe author '{0}' cannot be deleted because there are books attached to this author in the NonRentedBooks table.", authorName);
+                        nonRentedBooksReader.Close();
+                        return;
+                    }
+
+                    nonRentedBooksReader.Close();
+
+                    // Delete the author from the Author table
+                    SqlCommand deleteAuthorCmd = new SqlCommand("DELETE FROM Author WHERE FullName = @Author", sqlConn);
+                    deleteAuthorCmd.Parameters.AddWithValue("@Author", authorName);
+
+                    int rowsAffected = deleteAuthorCmd.ExecuteNonQuery();
+                    if (rowsAffected > 0)
+                    {
+                        Console.WriteLine("\nThe author '{0}' has been deleted.", authorName);
+                        authorDeleted = true;
+                    }
+                    else
+                    {
+                        Console.WriteLine("\nNo author found with the name '{0}'.", authorName);
+                    }
+
+                    sqlConn.Close();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+            }
+        }
     }
 }

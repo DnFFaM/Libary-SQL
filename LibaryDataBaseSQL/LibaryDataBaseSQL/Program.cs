@@ -94,8 +94,6 @@ namespace LibaryDataBaseSql
                             borrowerrwf.SearchBorrower(BorrworName, out borrowFound);
                             if (borrowFound)
                             {
-                                Console.WriteLine("\nBorrowers: ");
-                                Console.ReadKey();
                                 Console.Clear();
                             }
                             else
@@ -181,7 +179,119 @@ namespace LibaryDataBaseSql
                             goto start;
                         }
                     }
+                    if (figur == "3")
+                    {
+                        string textToDeleteMenu;
 
+                        textToDeleteMenu = ("\nDelete Menu !!! \n\n");
+                        textToDeleteMenu += ("\n Type 1 To Delete a Author \n");
+                        textToDeleteMenu += ("\n Type 2 To Delete a Book \n");
+                        textToDeleteMenu += ("\n Type 3 To Delete a Borrower \n");
+                        textToDeleteMenu += ("\n Type 0 To Go Back To Main Menu\n");
+                        Console.WriteLine(textToDeleteMenu);
+                        string? Deletefigur = Console.ReadLine();
+
+
+                        if (Deletefigur == "1")
+                        {
+                            // Create an instance of the Library class
+                            AuthorReadWriteFunctions Authorrwf = new AuthorReadWriteFunctions();
+
+                            // Prompt the user to enter the author name to delete
+                            Console.WriteLine("Enter the author name to delete:");
+                            string authorName = Console.ReadLine();
+
+                            // Call the SearchAuthor function
+                            bool authorFound;
+                            Authorrwf.SearchAuthor(authorName, out authorFound);
+
+                            if (authorFound)
+                            {
+                                // Author is found, prompt for deletion confirmation
+                                Console.WriteLine("\nAre you sure you want to delete this author? (Y/N)");
+                                string confirmation = Console.ReadLine();
+
+                                if (confirmation.ToUpper() == "Y")
+                                {
+                                    // Call the DeleteAuthor function
+                                    bool authorDeleted;
+                                    Authorrwf.DeleteAuthor(authorName, out authorDeleted);
+
+                                    if (authorDeleted)
+                                    {
+                                        Console.WriteLine("\nAuthor deleted successfully.");
+                                    }
+                                    else
+                                    {
+                                        Console.WriteLine("\nAuthor deletion failed.");
+                                    }
+                                }
+                                else
+                                {
+                                    Console.WriteLine("\nDeletion canceled.");
+                                }
+                            }
+                            else
+                            {
+                                Console.WriteLine("\nAuthor not found.");
+                                Console.ReadKey();
+                                Console.Clear();
+                            }
+                        }
+
+                        if (Deletefigur == "2")
+                        {
+                            // Create an instance of the Library class
+                            BookReadWriteFunctions library = new BookReadWriteFunctions();
+
+                            // Prompt the user to enter the book name to delete
+                            Console.WriteLine("\nEnter the book name to delete:");
+                            string bookName = Console.ReadLine();
+
+                            // Call the DeleteBook function
+                            bool bookDeleted;
+                            library.DeleteBook(bookName, out bookDeleted);
+
+                            if (bookDeleted)
+                            {
+                                Console.WriteLine("\nBook deleted successfully.");
+                                Console.ReadLine();
+                                Console.Clear();
+                            }
+                            else
+                            {
+                                Console.WriteLine("\nBook deletion failed.");
+                                Console.ReadLine();
+                                Console.Clear();
+                            }
+                        }
+                        if (Deletefigur == "3")
+                        {
+                            // Create an instance of the Library class
+                            BookReadWriteFunctions library = new BookReadWriteFunctions();
+
+                            // Prompt the user to enter the book name to delete
+                            Console.WriteLine("\nEnter the Borrower Name To Delete Him:");
+                            string borrowerName = Console.ReadLine();
+
+                            // Call the DeleteBook function
+                            bool borrowerDeleted;
+                            library.DeleteBook(borrowerName, out borrowerDeleted);
+
+                            if (borrowerDeleted)
+                            {
+                                Console.WriteLine("\nBorrower deleted successfully.");
+                                Console.ReadLine();
+                                Console.Clear();
+                            }
+                            else
+                            {
+                                Console.WriteLine("\nBorrower deletion failed.");
+                                Console.ReadLine();
+                                Console.Clear();
+                            }
+                        }
+                    }
                 }
                 catch (Exception ex)
                 {
